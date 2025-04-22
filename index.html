@@ -325,6 +325,16 @@
     });
   }
 
+  // jsQR QR Scan
+  const video = document.getElementById("qr-video");
+  const qrResult = document.getElementById("qr-result");
+  navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+    .then(function(stream) {
+      video.srcObject = stream;
+    })
+    .catch(function(err) {
+      console.log("خطأ في الكاميرا:", err);
+    });
 
   function scanQRCodeWithJSQR() {
     const canvas = document.createElement("canvas");
